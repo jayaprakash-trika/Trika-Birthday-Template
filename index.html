@@ -134,6 +134,8 @@
             </div>
             <button type="button" class="add-more-btn">Add</button>
             <button type="submit">Submit</button>
+            <button type="button" style=" background-color: red;" class="clear-local-storage">Reset</button>
+
         </form>
         <div id="success-message" class="success-message"></div>
     </div>
@@ -143,6 +145,11 @@
         const fieldsContainer = document.getElementById('fields-container');
         const addMoreBtn = document.querySelector('.add-more-btn');
         const monthInput = document.getElementById('month');
+        const clearButton= document.querySelector(".clear-local-storage")
+        clearButton.addEventListener('click',()=>{
+            localStorage.removeItem('profiles');
+
+        })
 
         // Add More Fields
         addMoreBtn.addEventListener('click', () => {
