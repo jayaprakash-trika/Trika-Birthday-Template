@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Birthday Celebration Form</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            margin-top: 200px;
+        }
+
+        .form-container {
+            width: 400px;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            
+            
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input[type="file"] {
+            padding: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .add-more-btn {
+            background-color: #28a745;
+            margin-top: 10px;
+        }
+
+        .success-message {
+            text-align: center;
+            color: green;
+            margin-top: 15px;
+        }
+        .filed-set{
+             margin-bottom: 15px;
+    border: 2px solid green; /* Adding the green border */
+    padding: 5px; /* Optional: Adds some padding inside the border */
+    border-radius: 5px; /* Optional: Rounded corners */
+        }
+        .forminside-container{
+             border: 2x solid green;
+             padding: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Add Birthday Profile</h2>
+        <form id="birthday-form">
+            <!-- Month input only once -->
+            <div class="form-group">
+                <label for="month">Month</label>
+                <select id="month" name="month" required>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November" selected>November</option>
+                    <option value="December">December</option>
+                </select>
+            </div>
+            <div id="fields-container">
+                <div class="field-set" class="forminside-container">
+                    <div class="form-group" >
+                        <label for="name" >Name</label>
+                        <input type="text" name="name" placeholder="Enter name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Designation</label>
+                        <input type="text" name="title" placeholder="Enter designation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Upload Image</label>
+                        <input type="file" name="image" accept="image/*" required>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="add-more-btn">Add</button>
+            <button type="submit">Submit</button>
+            <button type="button" style=" background-color: red;" class="clear-local-storage">Reset</button>
+
+        </form>
+        <div id="success-message" class="success-message"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('birthday-form');
+        const fieldsContainer = document.getElementById('fields-container');
+        const addMoreBtn = document.querySelector('.add-more-btn');
+        const monthInput = document.getElementById('month');
+        const clearButton= document.querySelector(".clear-local-storage")
+        clearButton.addEventListener('click',()=>{
+            localStorage.removeItem('profiles');
+
+        })
+
+        // Add More Fields
+        addMoreBtn.addEventListener('click', () => {
+            const newFieldSet = `
+                <div class="field-set" class="forminside-container"  >
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" placeholder="Enter name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Designation</label>
+                        <input type="text" name="title" placeholder="Enter designation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Upload Image</label>
+                        <input type="file" name="image" accept="image/*" required>
+                    </div>
+                </div>
+            `;
+            fieldsContainer.insertAdjacentHTML('beforeend', newFieldSet);
+        });
+
+        // Form Submission
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const month = monthInput.value;
+            const profiles = [];
+            const fieldSets = document.querySelectorAll('.field-set');
+
+            fieldSets.forEach(fieldSet => {
+                const name = fieldSet.querySelector('input[name="name"]').value;
+                const title = fieldSet.querySelector('input[name="title"]').value;
+                const imageInput = fieldSet.querySelector('input[name="image"]');
+
+                if (!imageInput.files[0]) {
+                    alert('Please upload an image!');
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const imageData = event.target.result;
+
+                    // Push data to profiles array
+                    profiles.push({ name, title, image: imageData });
+
+                    // Store data in localStorage when all images are processed
+                    if (profiles.length === fieldSets.length) {
+                        const existingProfiles = JSON.parse(localStorage.getItem('profiles')) || [];
+                        const updatedProfiles = existingProfiles.concat({ month, profiles });
+                        localStorage.setItem('profiles', JSON.stringify(updatedProfiles));
+
+                        // Success message
+                        document.getElementById('success-message').textContent = 'Profiles added successfully!';
+                        setTimeout(() => {
+                            document.getElementById('success-message').textContent = '';
+                            window.location.href = 'profiles.html';
+                        }, 1500);
+                    }
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            });
+        });
+    </script>
+</body>
+
+</html>

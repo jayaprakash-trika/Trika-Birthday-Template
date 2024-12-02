@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto&family=Rounded+Mplus+1c&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <title>Birthday Celebration Template</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .outer-border {
+            display: flex;
+            position: relative;
+            width: 700px;
+            padding: 30px;
+            border: 1px solid black;
+            background: white;
+            min-height: 500px;
+            overflow: visible;
+            background-color: #FDC55E;
+            margin-bottom: 20px;
+            padding-top: 120px;
+        }
+
+        .temp-border {
+            width: 700px;
+            border: 1px solid black;
+            height: 630px;
+            display: flex;
+        }
+
+        .left-side-container {
+            width: 350px;
+            border: 1px solid black;
+            height: 630px;
+            background-color: #DD4242;
+            position: relative;
+        }
+
+        .right-side-container {
+            width: 350px;
+            border: 1px solid black;
+            height: 610px;
+            background-color: white;
+            padding: 10px;
+        }
+
+        .bday-title {
+            display: flex;
+            justify-content: center;
+            color: white;
+            font-family: lobster;
+            font-size: 5rem;
+            position: relative;
+        }
+
+        .top-right-logo {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            z-index: 10;
+        }
+
+
+        .tag-image {
+            position: absolute;
+            width: 320px;
+            height: 110px;
+            top: 61%;
+            left: 23%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .name-field {
+            position: relative;
+            z-index: 2;
+            /* Ensures it's above the tag image */
+            width: 300px;
+            display: flex;
+            justify-content: center;
+            font-family: "Rounded Mplus 1c";
+            font-size: 3rem;
+            text-align: center;
+            color: black;
+            margin-left: -15px;
+        }
+
+        .Wishing-quote {
+            font-family: "roboto";
+            color: white;
+            display: flex;
+            justify-content: center;
+            margin-top: 70px;
+            font-size: x-large;
+            text-align: center;
+        }
+
+        .profile-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            display: block;
+            margin: auto;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .form-container input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 90%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            background-color: #dd4242;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #c53636;
+        }
+
+        .download-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Birthday Template -->
+    <div class="outer-border">
+        <!-- Trika Logo -->
+        <img class="top-right-logo" src="trika logo.png" alt="Logo">
+        <img class="tag-image" src="tag image.png">
+
+        <div class="temp-border">
+            <div class="left-side-container">
+                <div>
+                    <h1 class="bday-title">Happy <br> Birthday</h1>
+                </div>
+                <!-- Name Field -->
+                <div>
+                    <h2 class="name-field" id="display-name">Your Name</h2>
+                </div>
+                <div>
+                    <p class="Wishing-quote">
+                        Wishing you a beautiful day <br> with good health and <br> happiness forever.
+                    </p>
+                </div>
+            </div>
+            <div class="right-side-container">
+                <img id="display-profile" class="profile-img" src="placeholder.jpg" alt="Profile">
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-container">
+        <form id="birthday-form">
+            <input type="text" id="name" placeholder="Enter Name" required>
+            <input type="file" id="profile-picture" accept="image/*" required>
+            <button type="submit">Generate Template</button>
+        </form>
+    </div>
+
+    <!-- Download Button -->
+    <button id="download-btn" class="download-btn">Download as Image</button>
+
+    <script>
+        const form = document.getElementById("birthday-form");
+        const displayName = document.getElementById("display-name");
+        const displayProfile = document.getElementById("display-profile");
+        const downloadBtn = document.getElementById("download-btn");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Get name value
+            const name = document.getElementById("name").value;
+            displayName.textContent = name;
+
+            // Get and preview uploaded image
+            const fileInput = document.getElementById("profile-picture");
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    displayProfile.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Download template as image
+        downloadBtn.addEventListener("click", function () {
+            html2canvas(document.querySelector('.outer-border')).then(function (canvas) {
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL();
+                link.download = 'birthday_celebration.png';
+                link.click();
+            });
+        });
+    </script>
+</body>
+
+</html>
