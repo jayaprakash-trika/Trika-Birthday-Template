@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto&family=Rounded+Mplus+1c&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <title>Birthday Celebration Template</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .outer-border {
+            display: flex;
+            position: relative;
+            width: 800px;
+            padding: 20px;
+            border: 1px solid black;
+            background: white;
+            min-height: 500px;
+            overflow: visible;
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .temp-border {
+            width: 800px;
+            border: 1px solid black;
+            height: 630px;
+            background-color: black;
+        }
+
+        .bday-title {
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(90deg, #ffd074, #ff7171);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: lobster;
+            font-size: 5rem;
+            position: relative;
+            top: 60px;
+            margin-bottom: 30px;
+        }
+
+        .top-logo {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            z-index: 10;
+            margin-top: 50px;
+        }
+
+        .profile-container {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            /* Ensures the image does not overflow the container */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            top: 30px;
+            margin: auto;
+            background-color: #f0f0f0;
+            border: 8px solid white;
+        }
+
+        /* .profile-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        } */
+
+        .name-field {
+            position: relative;
+            left: 30%;
+            margin-top: 55px;
+            z-index: 3;
+            width: 340px;
+            display: flex;
+            justify-content: center;
+            font-family: "Rounded Mplus 1c";
+            font-size: 3rem;
+            margin-left: -20px;
+            text-align: center;
+            color: black;
+            background-color: #ff7272;
+            text-transform: uppercase;
+        }
+
+        .balloon {
+            width: 50px;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .balloon-left {
+            top: -20px;
+            left: -10px;
+            transform: rotate(-15deg);
+        }
+
+        .balloon-right {
+            top: -20px;
+            right: -10px;
+            transform: rotate(15deg);
+        }
+
+        .imageWrapper {
+            position: relative;
+            left: 88%;
+            top: -65px;
+        }
+
+        .cake-image {
+            height: 80px;
+            width: 80px;
+            position: relative;
+        }
+
+        .leftImage,
+        .rightImage {
+            position: absolute;
+            top: 15%;
+            transform: translateY(-67%);
+            z-index: 1;
+        }
+
+        .leftImage {
+            left: 0px;
+        }
+
+        .rightImage {
+            right: -1px;
+        }
+
+        .leftImage img,
+        .rightImage img {
+            height: 150px;
+            width: auto;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .form-container input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 90%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            background-color: #ff7272;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #e06666;
+        }
+
+        .download-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff7272;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background-color: #e06666;
+        }
+
+        .balloons {
+            position: absolute;
+            width: 185px;
+            height: 188px;
+            top: 335px;
+            left: 182px;
+            z-index: 1;
+
+        }
+        .profile-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+    </style>
+</head>
+
+<body>
+    <a href="/" style="
+    position: absolute; 
+    top: 20px; 
+    right: 355px; 
+    background-color: #0066cc; 
+    color: white; 
+    padding: 10px 20px; 
+    text-decoration: none; 
+    border-radius: 5px; 
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;">
+    Back to Homepage
+</a>
+    <!-- Birthday Template -->
+    <div class="outer-border">
+        <img class="balloons" src="images/simple-template/baloonss.png">
+        <div class="temp-border">
+            <div class="leftImage">
+                <img src="images/simple-template/leftimg.png" alt="left" class="leftImage" />
+            </div>
+            <div class="rightImage">
+                <img src="images/simple-template/rightimg.png" alt="right" class="rightImage" />
+            </div>
+            <div class="logo">
+                <img class="top-logo" src="images/simple-template/trika_logo.png" alt="Logo">
+            </div>
+            <div class="content-container">
+                <div>
+                    <h1 class="bday-title">Happy Birthday</h1>
+                </div>
+                <div class="profile-container">
+                    <img id="display-profile" class="profile-img" src="images/simple-template/profilepic.png" alt="Profile">
+                </div>
+                <div class="textWrapper">
+                    <h2 class="name-field" id="display-name">Your Name</h2>
+                </div>
+                <div class="imageWrapper">
+                    <img src="images/simple-template/cake.png" alt="cake" class="cake-image" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form -->
+    <div class="form-container">
+        <form id="birthday-form">
+            <input type="text" id="name" placeholder="Enter Name" required>
+            <input type="file" id="profile-picture" accept="image/*" required>
+            <button type="submit">Update</button>
+        </form>
+        <button id="download-btn" class="download-btn">Download Template</button>
+    </div>
+
+    <script>
+        const form = document.getElementById("birthday-form");
+        const displayName = document.getElementById("display-name");
+        const displayProfile = document.getElementById("display-profile");
+        const downloadBtn = document.getElementById("download-btn");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Get name value
+            const name = document.getElementById("name").value;
+            displayName.textContent = name;
+
+            // Get and preview uploaded image
+            const fileInput = document.getElementById("profile-picture");
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    displayProfile.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Download template as image
+        downloadBtn.addEventListener("click", function () {
+            html2canvas(document.querySelector('.outer-border')).then(function (canvas) {
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL();
+                link.download = 'birthday_celebration.png';
+                link.click();
+            });
+        });
+    </script>
+</body>
+
+</html>
