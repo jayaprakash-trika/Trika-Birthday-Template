@@ -377,6 +377,21 @@
     </head>
 
     <body>
+        <a href="/multi form.html" style="
+        position: absolute; 
+        top: 20px; 
+        right: 440px; 
+        background-color: #0066cc; 
+        color: white; 
+        padding: 10px 20px; 
+        text-decoration: none; 
+        border-radius: 5px; 
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;">
+        Add More
+    </a>
         <div  class="veryoutborder">
         <button id="download-btn" class="download-btn">Download as Image</button>
 
@@ -404,7 +419,7 @@
             const storedProfiles = JSON.parse(localStorage.getItem('profiles')) || [];
             storedProfiles.forEach(({ month, profiles }) => {
                 const styledHeading = document.querySelector('.styled-heading');
-                styledHeading.innerHTML = `$Celebrating Birthdays<br>in ${month}`;
+                styledHeading.innerHTML = `Celebrating Birthdays<br>in ${month}`;
 
                 profiles.forEach(profile => {
                     const profileDiv = document.createElement('div');
