@@ -95,6 +95,50 @@
             border: 2x solid green;
             padding: 2px;
         }
+
+         .material-btn {
+            margin: 5px;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #6200ee;
+             border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            outline: none;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .material-btn:hover {
+            background-color: #3700b3;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+         .material-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .material-btn:active::after {
+            width: 200px;
+            height: 200px;
+            opacity: 1;
+            transition: 0s;
+        }
     </style>
 </head>
 
@@ -136,16 +180,13 @@
                     </div>
                 </div>
             </div>
-            <div style="display: flex;">
-                <button type="button" class="add-more-btn">Add More Profile</button>
-                <button type="submit">Submit</button>
-                <button type="button" style=" background-color: red;" class="clear-local-storage">Reset Data</button>
-                <a id="home-btn" 
-                href="/"
-                style="background-color: aqua; padding: 10px 20px; color: black; text-decoration: none; border: 1px solid black; border-radius: 5px; display: inline-block;">
-                Back to Homepage
-             </a>
-             
+            <div>
+                <button type="button" class="material-btn" style="background-color: #28a745;" >Add More Profile</button>
+                <button type="submit" class="material-btn">Submit</button>
+                <button type="button" style=" background-color: red;" class="material-btn">Reset Data</button>
+                <a id="home-btn" href="/"
+                class="material-btn" style="width: 90%;text-align: center;text-decoration: none; background-color: #333;">Back to Homepage</a>
+
 
         </form>
         <div id="success-message" class="success-message"></div>
@@ -163,8 +204,8 @@
         })
 
         document.getElementById("home-btn").addEventListener("click", function () {
-        window.location.href = "/";
-    });
+            window.location.href = "/";
+        });
 
         // Add More Fields
         addMoreBtn.addEventListener('click', () => {
