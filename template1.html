@@ -169,7 +169,7 @@
 
 <body>
     <!-- Back to Form Button -->
-    <a href="/" style="
+    <a id="home-btn" style="
         position: absolute; 
         top: 20px; 
         right: 380px; 
@@ -229,7 +229,9 @@
         const displayName = document.getElementById("display-name");
         const displayProfile = document.getElementById("display-profile");
         const downloadBtn = document.getElementById("download-btn");
-
+        document.getElementById("home-btn").addEventListener("click", function () {
+        window.location.href = "/";
+    });
         form.addEventListener("submit", function (e) {
             e.preventDefault();
 
