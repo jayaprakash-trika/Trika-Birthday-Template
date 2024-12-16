@@ -26,7 +26,7 @@
             width: 600px;
             padding: 30px;
             border: 1px solid black;
-            background: url("images/Template4/background4.png");
+            background: url("images/");
             background-size: cover;
             min-height: 550px;
             overflow: hidden;
@@ -43,7 +43,7 @@
             /* Ensure it covers the entire width */
             height: 50%;
             /* Only bottom half of the element */
-            background: url("images/Template4/background-down4.png");
+            background: url("images/Template 2/background-down4.png");
             height: 80%;
             background-size: cover;
             z-index: 1;
@@ -219,16 +219,16 @@
 </a>
     <!-- Birthday Template -->
     <div class="outer-border">
-        <img class="trika-logo" src="images/Template4/triaga logo4.png" alt="trika logo4">
-        <img class="bday-prlfile" src="images/Template4/bday profile4.png" alt="bday profile">
-        <img class="bday-wish" src="images/Template4/bday wish4.png" alt="bday wish">
-        <img class="prfoile-pic" src="images/Template4/no-image.png" id="display-profile" alt="profile">
+        <img class="trika-logo" src="images/Template 2/triaga logo4.png" alt="trika logo4">
+        <img class="bday-prlfile" src="images/Template 2/bday profile4.png" alt="bday profile">
+        <img class="bday-wish" src="images/Template 2/bday wish4.png" alt="bday wish">
+        <img class="prfoile-pic" src="images/Template 2/no-image.png" id="display-profile" alt="profile">
 
-        <img class="baloons" src="images/Template4/baloon.png" alt="baloons">
-        <img class="blue-star" src="images/Template4/bllue-star.png">
-        <img class="yellow-star" src="images/Template4/yellow-star.png">
-        <img class="yellow-star" src="images/Template4/yellow-star.png">
-        <img class="spring" src="images/Template4/spring.png">
+        <img class="baloons" src="images/Template 2/baloon.png" alt="baloons">
+        <img class="blue-star" src="images/Template 2/bllue-star.png">
+        <img class="yellow-star" src="images/Template 2/yellow-star.png">
+        <img class="yellow-star" src="images/Template 2/yellow-star.png">
+        <img class="spring" src="images/Template 2/spring.png">
 
 
 
@@ -285,13 +285,11 @@
         });
 
         // // Download template as image
-        downloadBtn.addEventListener('click', function () {
+        downloadBtn.addEventListener("click", function () {
             html2canvas(document.querySelector('.outer-border')).then(function (canvas) {
-                // Convert canvas to JPEG
-                const jpegDataUrl = canvas.toDataURL('image/jpeg', 1.0); // Quality 1.0 = Max Quality
                 const link = document.createElement('a');
-                link.href = jpegDataUrl;
-                link.download = 'birthday_celebration.jpeg'; // Save as JPEG
+                link.href = canvas.toDataURL();
+                link.download = 'birthday_celebration.png';
                 link.click();
             });
         });
