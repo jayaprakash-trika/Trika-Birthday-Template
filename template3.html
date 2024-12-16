@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lobster&family=Oldenburg&family=Roboto&family=Rounded+Mplus+1c&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto&family=Rounded+Mplus+1c&display=swap"
         rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
     <title>Birthday Celebration Template</title>
     <style>
         body {
@@ -23,38 +23,133 @@
         .outer-border {
             display: flex;
             position: relative;
-            width: 600px;
-            padding: 30px;
+            width: 700px;
+            padding: 20px;
             border: 1px solid black;
-            background: url("images/Template4/background4.png");
-            background-size: cover;
-            min-height: 550px;
-            overflow: hidden;
-            /* Prevent overflow issues */
+            background: white;
+            min-height: 500px;
+            overflow: visible;
+            background-color: #fff;
             margin-bottom: 20px;
         }
 
-        .outer-border::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            /* Ensure it covers the entire width */
-            height: 50%;
-            /* Only bottom half of the element */
-            background: url("images/Template4/background-down4.png");
-            height: 80%;
-            background-size: cover;
-            z-index: 1;
-            opacity: 0.9;
-            /* Optional transparency */
+        .temp-border {
+            width: 800px;
+            border: 1px solid black;
+            height: 630px;
+            background-color: black;
         }
 
+        .bday-title {
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(90deg, #ffd074, #ff7171);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: lobster;
+            font-size: 5rem;
+            position: relative;
+            top: 60px;
+            margin-bottom: 30px;
+        }
 
-       
+        .top-logo {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            z-index: 10;
+            margin-top: 50px;
+        }
 
+        .profile-container {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            /* Ensures the image does not overflow the container */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            top: 30px;
+            margin: auto;
+            background-color: #f0f0f0;
+            border: 8px solid white;
+        }
 
+        
+
+        .name-field {
+            position: relative;
+            left: 30%;
+            margin-top: 55px;
+            z-index: 3;
+            width: 340px;
+            display: flex;
+            justify-content: center;
+            font-family: "Rounded Mplus 1c";
+            font-size: 3rem;
+            margin-left: -20px;
+            text-align: center;
+            color: black;
+            background-color: #ff7272;
+            text-transform: uppercase;
+        }
+
+        .balloon {
+            width: 50px;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .balloon-left {
+            top: -20px;
+            left: -10px;
+            transform: rotate(-15deg);
+        }
+
+        .balloon-right {
+            top: -20px;
+            right: -10px;
+            transform: rotate(15deg);
+        }
+
+        .imageWrapper {
+            position: relative;
+            left: 88%;
+            top: -65px;
+        }
+
+        .cake-image {
+            height: 80px;
+            width: 80px;
+            position: relative;
+        }
+
+        .leftImage,
+        .rightImage {
+            position: absolute;
+            top: 15%;
+            transform: translateY(-67%);
+            z-index: 1;
+        }
+
+        .leftImage {
+            left: 0px;
+        }
+
+        .rightImage {
+            right: -1px;
+        }
+
+        .leftImage img,
+        .rightImage img {
+            height: 150px;
+            width: auto;
+        }
 
         .form-container {
             width: 100%;
@@ -78,7 +173,7 @@
 
         .form-container button {
             padding: 10px 20px;
-            background-color: #dd4242;
+            background-color: #ff7272;
             color: white;
             border: none;
             border-radius: 5px;
@@ -86,13 +181,13 @@
         }
 
         .form-container button:hover {
-            background-color: #c53636;
+            background-color: #e06666;
         }
 
         .download-btn {
             margin-top: 20px;
             padding: 10px 20px;
-            background-color: #0066cc;
+            background-color: #ff7272;
             color: white;
             border: none;
             border-radius: 5px;
@@ -100,29 +195,33 @@
         }
 
         .download-btn:hover {
-            background-color: #005bb5;
+            background-color: #e06666;
         }
 
-        .trika-logo {
+        .balloons {
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 150px;
-            height: 60px;
-            padding: 5px;
+            width: 159px;
+            height: 188px;
+            top: 335px;
+            left: 163px;
+            z-index: 1;
 
         }
 
-       
+        .profile-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
     </style>
-
 </head>
 
 <body>
     <a id="home-btn" style="
     position: absolute; 
     top: 20px; 
-    right: 430px; 
+    right: 355px; 
     background-color: #0066cc; 
     color: white; 
     padding: 10px 20px; 
@@ -132,39 +231,48 @@
     font-size: 14px;
     border: none;
     cursor: pointer;">
-    Back to Homepage
-</a>
+        Back to Homepage
+    </a>
     <!-- Birthday Template -->
     <div class="outer-border">
-        <img class="trika-logo" src="images/Template4/triaga logo4.png" alt="trika logo4">
-        
-
-
-
-
-
-        <div class="Name-border">
-            <h1 class="bday-person-name" id="display-name">Your name</h1>
+        <img class="balloons" src="images/simple-template/baloonss.png">
+        <div class="temp-border">
+            <div class="leftImage">
+                <img src="images/simple-template/leftimg.png" alt="left" class="leftImage" />
+            </div>
+            <div class="rightImage">
+                <img src="images/simple-template/rightimg.png" alt="right" class="rightImage" />
+            </div>
+            <div class="logo">
+                <img class="top-logo" src="images/simple-template/trika_logo.png" alt="Logo">
+            </div>
+            <div class="content-container">
+                <div>
+                    <h1 class="bday-title">Happy Birthday</h1>
+                </div>
+                <div class="profile-container">
+                    <img id="display-profile" class="profile-img" src="images/simple-template/profilepic.png"
+                        alt="Profile">
+                </div>
+                <div class="textWrapper">
+                    <h2 class="name-field" id="display-name">Your Name</h2>
+                </div>
+                <div class="imageWrapper">
+                    <img src="images/simple-template/cake.png" alt="cake" class="cake-image" />
+                </div>
+            </div>
         </div>
-
     </div>
 
-    <!-- Form Section -->
+    <!-- Form -->
     <div class="form-container">
-
-        <div>
-
-
-        </div>
         <form id="birthday-form">
             <input type="text" id="name" placeholder="Enter Name" required>
             <input type="file" id="profile-picture" accept="image/*" required>
-            <button type="submit">Generate Template</button>
+            <button type="submit">Update</button>
         </form>
+        <button id="download-btn" class="download-btn">Download Template</button>
     </div>
-
-    <!-- Download Button -->
-    <button id="download-btn" class="download-btn">Download as Image</button>
 
     <script>
         const form = document.getElementById("birthday-form");
@@ -191,9 +299,9 @@
             }
         });
         document.getElementById("home-btn").addEventListener("click", function () {
-        window.location.href = "https://jayaprakash-trika.github.io/Trika-Birthday-Template/";
-    });
-        // // Download template as image
+            window.location.href = "https://jayaprakash-trika.github.io/Trika-Birthday-Template/";
+        });
+        // Download template as image
         downloadBtn.addEventListener("click", function () {
             html2canvas(document.querySelector('.outer-border')).then(function (canvas) {
                 const link = document.createElement('a');
