@@ -285,15 +285,17 @@
             }
         });
 
-        // // Download template as image
-        downloadBtn.addEventListener("click", function () {
+        downloadBtn.addEventListener('click', function () {
             html2canvas(document.querySelector('.outer-border')).then(function (canvas) {
+                // Convert canvas to JPEG
+                const jpegDataUrl = canvas.toDataURL('image/jpeg', 1.0); // Quality 1.0 = Max Quality
                 const link = document.createElement('a');
-                link.href = canvas.toDataURL();
-                link.download = 'birthday_celebration.png';
+                link.href = jpegDataUrl;
+                link.download = 'birthday_celebration.jpeg'; // Save as JPEG
                 link.click();
             });
         });
+        
     </script>
 </body>
 
